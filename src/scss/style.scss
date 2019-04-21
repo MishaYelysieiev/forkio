@@ -1,0 +1,70 @@
+$m-font: 'Montserrat',sans-serif;
+$l-font: 'Lato',sans-serif;
+$violet: #8d81ac;
+.body{
+  min-width: 320px;
+}
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+@media screen and (max-width:480px){
+  min-width: 320px;
+}
+
+@mixin btn($ptb,$plr,$fsb){
+  background-color: $violet;
+  font-family: $m-font;
+  outline-style: none;
+  text-align: center;
+  font-size: $fsb+px;
+  border-radius: 9999px;
+  color: #fff;
+  padding: $ptb+px $plr+px;
+  cursor: pointer;
+}
+
+@mixin flex($jc, $ai) {
+  display: flex;
+  @if $jc == c {
+    justify-content: center;
+  } @else if $jc == sa {
+    justify-content: space-around;
+  } @else if $jc == sb {
+    justify-content: space-between;
+  } @else if $jc == fs {
+    justify-content: flex-start;
+  } @else if $jc == fe {
+    justify-content: flex-end;
+  }
+
+  @if $ai == c {
+    align-items: center;
+  } @else if $ai == sa {
+    align-items: space-around;
+  } @else if $ai == sb {
+    align-items: space-between;
+  } @else if $ai == fs {
+    align-items: flex-start;
+  } @else if $ai == fe {
+    align-items: flex-end;
+  }
+}
+
+@mixin text($ff, $co, $fs, $fw, $ta, $tt) {
+  font-family: $ff;
+  color: $co;
+  font-size: $fs+px;
+  font-weight: $fw;
+  text-align: $ta;
+  text-transform: $tt;
+}
+
+
+
+@import "../sections/1_header/scss/_header.scss";
+@import "../sections/2_editor/scss/_editor.scss";
+@import "../sections/3_people/scss/_people.scss";
+@import "../sections/4_pricing/scss/_pricing.scss";

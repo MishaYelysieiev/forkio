@@ -1,0 +1,205 @@
+.editor{
+  background-color: #fff;
+  &__content{
+    @include flex(c,c);
+    flex-direction: column;
+    padding-top: 67px;
+  }
+  &__title{
+    @include text($m-font,#635c73,54,700,center,uppercase);
+    margin-bottom: 35px;
+  }
+  &__subtitle{
+    @include text($l-font,#323232,21,400,center,none);
+    max-width: 913px;
+    margin-bottom: 36px;
+  }
+  &__actions{
+    @include flex(c,c);
+    margin-bottom: 70px;
+    flex-wrap: wrap;
+    &-item{
+      margin-right: 10px;
+      margin-bottom: 34px;
+      border: 1px solid rgba(27,31,35,0.2);
+      border-radius: 0.25em;
+      &-btn{
+        @include flex(c,c);
+        position: relative;
+        display: inline-block;
+        padding: 3px 10px;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 20px;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        color: #24292e;
+        background-color: #eff3f6;
+        background-image: linear-gradient(-180deg, #fafbfc 0%, #eff3f6 90%);
+        border-right: 1px solid rgba(27,31,35,0.2);
+        & svg{
+          vertical-align: sub;
+        }
+        &:hover{
+          background-color: #e6ebf1;
+          background-image: linear-gradient(-180deg, #f0f3f6 0%, #e6ebf1 90%);
+          border-color: rgba(27,31,35,0.35);
+        }
+      }
+      &-number{
+        padding: 3px 10px 3px 7px;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 20px;
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        color: #24292e;
+      }
+    }
+  }
+}
+.what-you-get{
+  background-color: #f4f4f4;
+  padding: 84px 0 54px;
+  overflow-x: hidden;
+  &__content{
+    @include flex(c,fs);
+  }
+  &__options{
+    flex: 1 0 50%;
+    @include flex(fs,fs);
+    flex-direction: column;
+    &-item{
+      @include flex(sb,fs);
+      margin-bottom: 34px;
+      &-icon-container{
+        width: 111px;
+        flex-shrink: 0;
+      }
+      .icon-web{
+        background-image: url(../img/what-you-get-sprite.png);
+        background-repeat: no-repeat;
+        width: 111px;
+        height: 64px;
+        background-position: -249px -4px;
+      }
+      .icon-tool{
+        background-image: url(../img/what-you-get-sprite.png);
+        background-repeat: no-repeat;
+        width: 90px;
+        height: 80px;
+        background-position: -151px -4px;
+      }
+      .icon-experiment{
+        background-image: url(../img/what-you-get-sprite.png);
+        background-repeat: no-repeat;
+        width: 60px;
+        height: 84px;
+        background-position: -83px -4px;
+        margin-left: 16px;
+      }
+      .icon-clock{
+        background-image: url(../img/what-you-get-sprite.png);
+        background-repeat: no-repeat;
+        width: 71px;
+        height: 71px;
+        background-position: -4px -4px;
+        margin-left: 11px;
+      }
+      &-text-container{
+        padding-right: 90px;
+        padding-left: 23px;
+      }
+    }
+    &-title{
+      @include text($m-font,#323232,16,400,left,none);
+      line-height: 21px;
+      margin-bottom: 20px;
+    }
+    &-text{
+      @include text($m-font,#848e97,14,400,left,none);
+      line-height: 21px;
+    }
+  }
+  &__picture{
+    width: 50%;
+    &-title{
+      @include text($m-font,#8d81ac,48,700,left,none);
+      padding-left: 22px;
+    }
+  }
+}
+@media screen and (max-width: 992px){
+  .editor__title{
+    font-size: 42px;
+  }
+  .editor__subtitle{
+    padding: 0 40px;
+  }
+  .what-you-get{
+    position: relative;
+    padding: 155px 0 22px;
+  }
+  .what-you-get__content{
+    flex-direction: column;
+  }
+  .what-you-get__options-item-text-container{
+    padding-right: 0;
+  }
+  .what-you-get__picture{
+    width: 100%;
+  }
+  .what-you-get__picture-title{
+    display: block;
+    width: 100%;
+    font-size: 42px;
+    padding-left: 0;
+    text-align: center;
+    position: absolute;
+    top: 54px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+@media screen and (max-width: 480px){
+  .editor__title{
+    font-size: 26px;
+    margin-bottom: 23px;
+  }
+  .editor__subtitle{
+    padding: 0 14px;
+    font-size: 14px;
+  }
+  .editor__actions{
+    margin-bottom: 88px;
+  }
+  .what-you-get{
+    padding: 138px 0 6px;
+  }
+  .what-you-get__options-item{
+    flex-direction: column;
+    align-items: center;
+  }
+  .what-you-get__options-item-icon-container{
+    margin: 0 auto 26px;
+    width: auto;
+    height: auto;
+  }
+  .what-you-get__options-item-text-container{
+    padding-left: 0;
+  }
+  .what-you-get__options-title, .what-you-get__options-text{
+    text-align: center;
+  }
+  .what-you-get__picture-title{
+    font-size: 32px;
+    padding: 0 36px;
+    width: calc(100% - 72px);
+    top: 34px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .icon-experiment, .icon-clock{
+    margin-left: 0;
+  }
+}

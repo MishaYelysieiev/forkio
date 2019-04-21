@@ -1,0 +1,307 @@
+.header {
+  background-color: #27262a;
+  color: $violet;
+  padding: 30px 0;
+  box-sizing: border-box;
+  position: relative;
+  overflow: visible;
+
+  &__content {
+    @include flex(sb, c);
+    @include text($m-font, inherit, 16, 700, center, capitalize);
+  }
+
+  &__burger-menu {
+    display: none;
+  }
+
+  &__logo {
+    @include flex(fs, c);
+    @include text($l-font, inherit, 24, 700, center, uppercase);
+    cursor: pointer;
+
+    &:hover {
+      color: #fff;
+    }
+
+    &:hover .header__logo-img {
+      background-position: -10px -10px;
+    }
+
+    &-title {
+      margin-left: 17px;
+    }
+
+    &-img {
+      width: 43px;
+      height: 41px;
+      background-image: url("../img/logo-sprite.png");
+      background-position: -73px -10px;
+    }
+  }
+
+  &__navbar {
+    @include flex(fe, c);
+    flex-grow: 2;
+
+    & li {
+      display: inline-block;
+      transition: 0.4s;
+      margin: 0 24px;
+      cursor: pointer;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+
+  &__btn {
+    @include btn(12, 35, 16);
+    text-transform: capitalize;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    transition: 0.4s;
+    margin-left: 24px;
+
+    &:hover {
+      border-color: $violet;
+      background-color: #fff;
+      color: $violet;
+    }
+  }
+}
+
+.banner {
+  background-image: url("../img/banner-bg.png");
+  background-position: center;
+  background-position-y: 20%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 79vh;
+  color: #fff;
+  position: relative;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 60px;
+  margin-bottom: 64px;
+
+  &__btn {
+    @include text($m-font, inherit, 21, 700, center, capitalize);
+    @include btn(22, 62, 21);
+    text-transform: capitalize;
+    border: 1px solid transparent;
+    transition: 0.4s;
+    position: absolute;
+    transform: translate(-50%, 50%);
+    bottom: 0;
+    box-sizing: border-box;
+    line-height: 20px;
+    white-space: nowrap;
+
+    &:hover {
+      border-color: $violet;
+      background-color: #fff;
+      color: $violet;
+    }
+
+    &-info {
+      @include text($m-font, #848e97, 14, 400, center, none);
+      position: absolute;
+      transform: translate(-50%, 0);
+      bottom: -64px;
+      left: 50%;
+      white-space: nowrap;
+    }
+  }
+
+  &__title {
+    @include text($m-font, inherit, 82, 700, center, capitalize);
+    margin-bottom: 18px;
+  }
+
+  &__sub-title {
+    @include text($l-font, $violet, 30, 400, center, none);
+    margin-bottom: 18px;
+  }
+
+  &__version-title {
+    @include text($m-font, #848e97, 16, 400, center, uppercase);
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .header {
+    padding: 24px 20px 19px 20px;
+
+    &__content {
+      flex-wrap: wrap;
+    }
+
+    &__navbar {
+      order: 3;
+      flex-basis: 100%;
+      justify-content: center;
+      margin-top: 22px;
+
+      & li:first-child {
+        margin-left: 0;
+      }
+
+      & li:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .banner {
+    padding: 50px;
+    height: 76vh;
+    background-size: 140%;
+
+    &__title {
+      font-size: 72px;
+      margin-bottom: 26px;
+    }
+
+    &__sub-title {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    &__version-title {
+      font-size: 14px;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header {
+    padding: 30px 16px;
+
+    &__btn {
+      @include btn(12, 24, 15);
+      margin: 0;
+    }
+
+    &__logo-title {
+      display: none;
+    }
+
+    &__navbar {
+      z-index: 1;
+      top: -400%;
+      position: absolute;
+      flex-direction: column;
+      background-color: #333333;
+      left: 0;
+      right: 0;
+      margin: 0 15px;
+      align-items: stretch;
+      transition: 0.4s;
+      color: #ffffff;
+
+      &_active {
+        top: 100%;
+
+        & li.header__navbar-item_active {
+          color: $violet;
+          position: relative;
+        }
+      }
+
+      &-item_active:before {
+        content: " ";
+        display: block;
+        width: 8px;
+        box-sizing: border-box;
+        left: 0;
+        bottom: 20px;
+        top: 20px;
+        background-color: $violet;
+        position: absolute;
+      }
+
+      & li {
+        white-space: nowrap;
+        text-align: left;
+        padding: 35px;
+        margin: 0;
+        font-size: 26px;
+        font-weight: 400;
+
+        &:nth-child(2n) {
+          border-top: 2px solid #666666;
+          border-bottom: 2px solid #666666;
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+
+    &__burger-menu {
+      @include flex(sb, sb);
+      flex-direction: column;
+      width: 26px;
+      height: 21px;
+      cursor: pointer;
+
+      &-line {
+        height: 3px;
+        background-color: #fff;
+        border-radius: 999999px;
+        position: relative;
+        transform-origin: 0 1px;
+        transition: 0.4s;
+      }
+
+      & .header__burger-menu-line {
+        &:first-child {
+          margin-left: 7px;
+        }
+      }
+
+      &_crossed {
+        & div:nth-child(3) {
+          display: none;
+        }
+
+        & .header__burger-menu-line {
+          transform: rotateZ(-45deg);
+          width: 27px;
+
+          &:first-child {
+            margin: 0;
+            transform: rotateZ(45deg);
+          }
+        }
+      }
+    }
+  }
+
+  .banner {
+    padding: 43px 30px;
+    background-size: cover;
+
+    &__title {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    &__sub-title {
+      font-size: 18px;
+      line-height: 34px;
+      text-transform: capitalize;
+    }
+
+    &__version-title {
+      font-size: 14px;
+    }
+
+    &__btn {
+      @include btn(15, 31, 18);
+    }
+  }
+}
